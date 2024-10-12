@@ -24,25 +24,14 @@
   </div>
 </template>
   
-  <script>
-import { defineComponent, toRefs } from "vue";
+<script setup>  
+import { defineProps, defineEmits } from "vue";  
 
-export default defineComponent({
-  props: ["imageUrl", "productName", "price", "addToCart"],
+const props = defineProps(['imageUrl', 'productName', 'price']);  
 
-  setup(props, { emit }) {
-    const { imageUrl, productName, price } = toRefs(props);
+const emit = defineEmits(['add-to-cart']);  
 
-    const addToCart = () => {
-      emit("add-to-cart");
-    };
-
-    return {
-      imageUrl,
-      productName,
-      price,
-      addToCart,
-    };
-  },
-});
-</script>
+const addToCart = () => {  
+  emit('add-to-cart');  
+};  
+</script>  

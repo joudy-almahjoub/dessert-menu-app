@@ -23,7 +23,7 @@ export default {};
     width: 0;
   }
   to {
-    width: 50%;
+    width: 100%;
   }
 }
 
