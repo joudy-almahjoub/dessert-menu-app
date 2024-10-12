@@ -1,6 +1,19 @@
 # Nuxt 3 Minimal Starter
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+# Dessert Shop
+
+## Description
+
+Dessert Shop is a web application built with Nuxt 3, providing users with an interactive interface to explore and order various desserts. The application features a dynamic menu, a shopping cart, and user-friendly navigation.
+
+## Technologies Used
+
+- **Framework**: [Nuxt3.js]
+- **Programming Language**: [JavaScript]
+- **Styling**: [Tailwind-CSS]
+- **State Management**: [Pinia]
+
+## Installation
 
 ## Setup
 
@@ -71,5 +84,3 @@ yarn preview
 # bun
 bun run preview
 ```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
