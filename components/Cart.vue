@@ -1,10 +1,7 @@
 <template>
   <div>
     <transition name="slide">
-      <div
-        v-if="isOpen"
-        class="fixed inset-0  flex justify-end z-50"
-      >
+      <div v-if="isOpen" class="fixed inset-0 flex justify-end z-50">
         <div
           class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 bg-wheat text-darkBrown p-6 overflow-y-auto shadow-xl flex flex-col"
         >
@@ -95,42 +92,30 @@
 </template>
 
 <script setup>
-import { useCartStore } from "~/stores/cart";
-import { defineProps, defineEmits } from "vue";
+import { defineProps, defineEmits, ref } from "vue";
 import ConfirmModal from "./custom/ConfirmModal.vue";
-
+import { useCart } from "~/composables/useCart";
 const props = defineProps({
   isOpen: Boolean,
 });
 
 const isModalVisible = ref(false);
-
-const emit = defineEmits(["close"]);
-
 const cartStore = useCartStore();
-const itemsLength = computed(() => cartStore.items.length);
+const emit = defineEmits(["close"]);
+const cart = useCart();
+const {
+  itemsLength,
+  removeFromCart,
+  increaseQuantity,
+  decreaseQuantity,
+  resetCart,
+} = cart;
 
 function openConfirmationModal() {
   isModalVisible.value = true;
 }
 function closeDrawer() {
   emit("close");
-}
-
-function removeFromCart(productId) {
-  cartStore.removeFromCart(productId);
-}
-
-function increaseQuantity(productId) {
-  cartStore.updateQuantity(productId, true);
-}
-
-function decreaseQuantity(productId) {
-  cartStore.updateQuantity(productId, false);
-}
-
-function resetCart() {
-  cartStore.resetCart();
 }
 </script>
 
@@ -139,6 +124,7 @@ function resetCart() {
 .slide-leave-active {
   transition: transform 0.3s ease;
 }
+
 .slide-enter,
 .slide-leave-to {
   transform: translateX(100%);

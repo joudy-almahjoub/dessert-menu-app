@@ -15,13 +15,8 @@
 </template>
 
 <script setup>
-import { useCartStore } from "~/stores/cart";
 import ProductCard from "~/components/custom/ProductCard.vue";
 import { products } from "~/data/products";
-
-const cartStore = useCartStore();
-
-const addToCart = (product) => {
-  cartStore.addToCart(product);
-};
+import { useCart } from "~/composables/useCart";
+const { addToCart } = useCart();
 </script>  

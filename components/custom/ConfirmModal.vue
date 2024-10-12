@@ -2,7 +2,7 @@
   <transition name="fade">
     <div
       v-if="isVisible"
-      class="fixed inset-0  flex justify-center items-center z-50"
+      class="fixed inset-0 flex justify-center items-center z-50"
     >
       <div class="bg-darkBrown p-6 rounded-lg shadow-lg max-w-sm">
         <h2 class="text-xl font-bold mb-4">Order Confirmation</h2>
@@ -10,7 +10,7 @@
         <div class="flex justify-end gap-4">
           <button
             @click="confirmOrder"
-            class="bg-pink text-wheat font-semibold py-2 px-4 rounded hover:bg-pink-dark transition duration-200"
+            class="bg-pink text-wheat font-semibold py-2 px-4 rounded-md hover:bg-pink-dark transition duration-200"
           >
             Confirm
           </button>
@@ -34,13 +34,13 @@ const props = defineProps({
 });
 
 const emit = defineEmits(["close", "confirm"]);
-const cartStore = useCartStore();
+const { resetCart } = useCart();
 function closeModal() {
   emit("close");
 }
 
 function confirmOrder() {
-  cartStore.resetCart();
+  resetCart();
   emit("close");
 }
 </script>

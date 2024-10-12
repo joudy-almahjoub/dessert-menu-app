@@ -86,6 +86,7 @@
 <script setup>
 import { ref } from "vue";
 import CartDrawer from "~/components/Cart.vue";
+import { useCart } from "~/composables/useCart";
 
 const navLinks = ref([
   { label: "Home", href: "/" },
@@ -95,9 +96,9 @@ const navLinks = ref([
 ]);
 const isMenuOpen = ref(false);
 
-const cartStore = useCartStore();
+const {itemsLength} = useCart();
 const isCartOpen = ref(false);
-const itemsLength = computed(() => cartStore.items.length);
+
 
 function toggleMenu() {
   isMenuOpen.value = !isMenuOpen.value;
